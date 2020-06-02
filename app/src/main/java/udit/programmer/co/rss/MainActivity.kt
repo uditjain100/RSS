@@ -22,11 +22,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setActionBar(toolbar_layout)
-        toolbar_layout.title = "NEWS"
+
+        setSupportActionBar(toolbar_layout)
+        supportActionBar?.title = "NEWS"
+        //supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         rv_layout.apply {
             layoutManager = LinearLayoutManager(baseContext, LinearLayoutManager.VERTICAL, false)
         }
+
         LoadRSS()
     }
 
@@ -67,6 +71,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.menu_refresh) LoadRSS()
+        else super.onOptionsItemSelected(item)
         return true
     }
 }

@@ -17,7 +17,7 @@
         android:orientation="vertical"
         android:padding="10sp">
 
-        <com.google.android.material.textview.MaterialTextView
+        <TextView
             android:id="@+id/pubtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
             android:textSize="25sp"
             android:textStyle="bold" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <TextView
             android:id="@+id/pubdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
             android:textSize="15sp"
             android:textStyle="bold" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <TextView
             android:id="@+id/pubcontent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

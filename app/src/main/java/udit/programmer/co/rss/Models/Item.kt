@@ -4,7 +4,7 @@ import java.util.*
 
 data class Item(
     val title: String,
-    val pubDate: Date,
+    val pubDate: String,
     val link: String,
     val guid: String,
     val author: String,

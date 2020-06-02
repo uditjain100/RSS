@@ -18,7 +18,7 @@
         android:padding="10sp">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/title"
+            android:id="@+id/pubtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -36,11 +36,11 @@
             android:textStyle="bold" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/pubcontext"
+            android:id="@+id/pubcontent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="Context"
+            android:text="Content"
             android:textSize="10dp"
             android:textStyle="bold" />
 

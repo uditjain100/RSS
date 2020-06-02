@@ -12,6 +12,7 @@ import udit.programmer.co.rss.R
 
 class FeedAdapter(private val rssObject: RSSObject, private val mContext: Context) :
     RecyclerView.Adapter<FeedViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedViewHolder {
         return FeedViewHolder(
             LayoutInflater.from(mContext).inflate(R.layout.item_layout, parent, false)
@@ -36,6 +37,6 @@ class FeedAdapter(private val rssObject: RSSObject, private val mContext: Contex
                 )
             }
         })
-
     }
+
 }

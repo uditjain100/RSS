@@ -7,24 +7,32 @@
     android:layout_margin="10dp"
     tools:context=".MainActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/toolbar_material"
+    <Toolbar
+        android:id="@+id/toolbar_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/DarkGoldenrod"
+        android:minHeight="?attr/actionBarSize" />
 
-        <com.google.android.material.appbar.MaterialToolbar
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/Blue"
-            app:title="RSS" />
-    </com.google.android.material.appbar.AppBarLayout>
+
+    <!--    <com.google.android.material.appbar.AppBarLayout-->
+    <!--        android:id="@+id/toolbar_material"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content">-->
+
+    <!--        <com.google.android.material.appbar.MaterialToolbar-->
+    <!--            style="@style/Widget.MaterialComponents.Toolbar.Primary"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:background="@color/Blue"-->
+    <!--            app:title="RSS" />-->
+    <!--    </com.google.android.material.appbar.AppBarLayout>-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar_material"
+        android:layout_below="@id/toolbar_layout"
         android:layout_marginTop="10dp" />
 
 </RelativeLayout>

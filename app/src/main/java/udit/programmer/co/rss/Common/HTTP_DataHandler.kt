@@ -7,20 +7,24 @@ import java.lang.StringBuilder
 import java.net.HttpURLConnection
 import java.net.URL
 
-class HTTP_DataHandler() {
-    var stream: String = ""
+class HTTP_DataHandler {
+
+    companion object {
+        var stream: String = ""
+    }
+
     fun GetHttpDataHandler(urlString: String): String {
-
-        var url = URL(urlString)
-        var urlConnection = url.openConnection() as HttpURLConnection
-
+        val url = URL(urlString)
+        val urlConnection = url.openConnection() as HttpURLConnection
         if (urlConnection.responseCode == HttpURLConnection.HTTP_OK) {
-            var r =
+            val r =
                 BufferedReader(InputStreamReader(BufferedInputStream(urlConnection.inputStream)))
-            var sb = StringBuilder()
-            var line = ""
-            while ((line != r.readLine()) != null)
+            val sb = StringBuilder()
+            var line = r.readLine()
+            while (line != null){
                 sb.append(line)
+                line = r.readLine()
+            }
             stream = sb.toString()
             urlConnection.disconnect()
         }

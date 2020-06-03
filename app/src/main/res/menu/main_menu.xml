@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_refresh"
-        android:icon="@drawable/refresh_icon"
+        android:icon="@drawable/ic_launcher_foreground"
         app:showAsAction="always"
         android:title="Refresh" />
 </menu>

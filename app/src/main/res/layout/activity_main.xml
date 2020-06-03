@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/Gray"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
@@ -11,7 +10,7 @@
         android:id="@+id/toolbar_layout"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:backgroundTint="@color/BurlyWood"
+        android:backgroundTint="@color/DodgerBlue"
         app:liftOnScroll="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -44,10 +43,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_layout"
-        android:background="@color/White"
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/toolbar_layout"
-        android:layout_margin="10dp" />
+        android:background="@color/White" />
 
 </RelativeLayout>

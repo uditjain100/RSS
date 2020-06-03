@@ -8,11 +8,9 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 class HTTP_DataHandler {
-
     companion object {
         var stream: String = ""
     }
-
     fun GetHttpDataHandler(urlString: String): String {
         val url = URL(urlString)
         val urlConnection = url.openConnection() as HttpURLConnection

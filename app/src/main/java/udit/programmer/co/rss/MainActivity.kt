@@ -29,9 +29,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        c_toolbar.setNavigationOnClickListener {
-            Toast.makeText(this, "ToolBar Clicked", Toast.LENGTH_LONG).show()
-        }
         c_toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.menu_refresh -> {
@@ -50,6 +47,10 @@ class MainActivity : AppCompatActivity() {
         LoadRSS()
     }
 
+    private fun LoadRSS() {
+        RSS_Class().execute(RSS_to_JSON_API + RSS_link)
+    }
+
     @SuppressLint("StaticFieldLeak")
     inner class RSS_Class : AsyncTask<String, String, String>() {
         internal var mDialog = ProgressDialog(this@MainActivity)
@@ -60,7 +61,7 @@ class MainActivity : AppCompatActivity() {
 
         override fun onPostExecute(result: String?) {
             mDialog.dismiss()
-            val rssObject: RSSObject = Gson().fromJson<RSSObject>(result, RSSObject::class.java)
+            val rssObject = Gson().fromJson(result, RSSObject::class.java)
             val adapter = FeedAdapter(rssObject)
             adapter.onItemClickListener = object : ItemClickListener {
                 override fun onClick(item: Item?, isLongClick: Boolean) {
@@ -77,11 +78,5 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun LoadRSS() {
-        val loadRSSAsync = RSS_Class()
-        val url_get_data = StringBuilder(RSS_to_JSON_API)
-        url_get_data.append(RSS_link)
-        loadRSSAsync.execute(url_get_data.toString())
-    }
 
 }

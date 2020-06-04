@@ -2,6 +2,8 @@ package udit.programmer.co.rss
 
 import android.annotation.SuppressLint
 import android.app.ProgressDialog
+import android.content.Intent
+import android.net.Uri
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,6 +15,8 @@ import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
 import udit.programmer.co.rss.Adapter.FeedAdapter
 import udit.programmer.co.rss.Common.HTTP_DataHandler
+import udit.programmer.co.rss.Interface.ItemClickListener
+import udit.programmer.co.rss.Models.Item
 import udit.programmer.co.rss.Models.RSSObject
 import java.lang.StringBuilder
 
@@ -57,7 +61,12 @@ class MainActivity : AppCompatActivity() {
         override fun onPostExecute(result: String?) {
             mDialog.dismiss()
             val rssObject: RSSObject = Gson().fromJson<RSSObject>(result, RSSObject::class.java)
-            val adapter = FeedAdapter(rssObject, baseContext)
+            val adapter = FeedAdapter(rssObject)
+            adapter.onItemClickListener = object : ItemClickListener {
+                override fun onClick(item: Item?, isLongClick: Boolean) {
+                    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(item!!.link)))
+                }
+            }
             rv_layout.adapter = adapter
             adapter.notifyDataSetChanged()
         }

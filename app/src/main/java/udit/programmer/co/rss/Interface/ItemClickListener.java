@@ -1,7 +1,7 @@
 package udit.programmer.co.rss.Interface;
 
-import android.view.View;
+import udit.programmer.co.rss.Models.Item;
 
 public interface ItemClickListener {
-    void onClick(View view, int position, boolean isLongClick);
+    void onClick(Item item, boolean isLongClick);
 }

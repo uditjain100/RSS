@@ -1,8 +1,5 @@
 package udit.programmer.co.rss.Adapter
 
-import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -10,12 +7,12 @@ import udit.programmer.co.rss.Interface.ItemClickListener
 import udit.programmer.co.rss.Models.RSSObject
 import udit.programmer.co.rss.R
 
-class FeedAdapter(private val rssObject: RSSObject, private val mContext: Context) :
-    RecyclerView.Adapter<FeedViewHolder>() {
+class FeedAdapter(private val rssObject: RSSObject) : RecyclerView.Adapter<FeedViewHolder>() {
+    var onItemClickListener: ItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedViewHolder {
         return FeedViewHolder(
-            LayoutInflater.from(mContext).inflate(R.layout.item_layout, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_layout, parent, false)
         )
     }
 
@@ -23,20 +20,14 @@ class FeedAdapter(private val rssObject: RSSObject, private val mContext: Contex
 
     override fun onBindViewHolder(holder: FeedViewHolder, position: Int) {
 
-        holder.txtTitle.text = rssObject.items[position].title
-        holder.txtPubDate.text = rssObject.items[position].pubDate
-        holder.txtContent.text = rssObject.items[position].content
+        holder.bind(rssObject.items[position])
+        holder.itemView.setOnClickListener {
+            onItemClickListener?.onClick(rssObject.items[position], false)
+        }
 
-        holder.SetItemClickListener(ItemClickListener { view, position, isLongClick ->
-            if (!isLongClick) {
-                mContext.startActivity(
-                    Intent(
-                        Intent.ACTION_VIEW,
-                        Uri.parse(rssObject.items[position].link)
-                    )
-                )
-            }
-        })
+        holder.itemView.setOnLongClickListener {
+            onItemClickListener?.onClick(rssObject.items[position], true)
+            return@setOnLongClickListener true
+        }
     }
-
 }
